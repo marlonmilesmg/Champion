@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <!-- Title -->
+  <title>Champion Farm Produce | Purchase</title>
+  <!-- Favicon -->
+  <link rel="icon" href="img/products/farm.jpg" />
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div class="preloader d-flex align-items-center justify-content-center">
+    <div class="spinner"></div>
+  </div>
+  <!-- ##### Header Area Start ##### -->
+  <!-- Navbar Area -->
+  <div class="top-header-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="top-header-content d-flex align-items-center justify-content-between">
+            <!-- Top Header Content -->
+            <div class="top-header-meta">
+              <p>Welcome to <span>Champion Farm Produce</span>, we hope you will enjoy our products</p>
+            </div>
+            <!-- Top Header Content -->
+            <div class="top-header-meta text-right">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="sales@championfarmproduce.co.zw"><i
+                  class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email:
+                  sales@championfarmproduce.co.zw</span></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="+263 775 857 274"><i class="fa fa-phone"
+                  aria-hidden="true"></i> <span>Call Us: +263 775 857 274</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+    <!-- ##### Shop Area Start ##### -->
+    <section class="shop-area section-padding-0-100">
+      <div class="container">
+        <div class="row">
+          <!-- Shop Filters -->
+          <div class="col-12">
+            <div class="shop-filters mb-30 d-flex align-items-center justify-content-between">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Shop Sidebar Area -->
+          <div class="col-12 col-md-4 col-lg-3">
+			<a href="index.html" class="nav-brand"><img src="img/products/farm.jpg" alt="" /></a>
+            </div>
+            <!-- Single Widget Area -->
+			
+            <div class="single-widget-area">
+              <!-- Title -->
+              <h3 class="widget-title">Please provide more of your details</h3>
+				<form action="/action_page.php" method="post">
+				<label>Full Name</label>
+				<input class="purchase" type="textbox" required name="fullname" placeholder="Name like 'Vimbiso Nhumwa'"><br>
+				<label>Delivery Address</label>
+				<input class="purchase" type="textbox" required name="address" placeholder="Address e.g. 24 Smith Drive, Houghton Park, Harare"><br>
+				<label>Delivery Date</label>
+				<input class="purchase" type="date" min="2019-06-12" required id="date" name="date"><br>
+				<label>Paying Ecocash Number</label><br>
+				<input class="purchase" type="tel" required name="number" pattern="\b(([\+]?263)?(0?7)?[1378])([\s.-]?[0-9]{1}[\s.-]?[0-9]{3}[\s.-]?[0-9]{3})$" placeholder="Enter phone number"><br>
+				<input type="checkbox" name="payment" value="delivery"> Pay on delivery<br>
+				<input type="submit" value="Proceed to order" class="btn famie-btn checkout-btn mt-30 w-100">
+				</form>
+            </div>
+          </div>
+
+          <!-- Shop Products Area -->
+          
+        </div>
+      </div>
+    </section>
+    <!-- ##### Shop Area End ##### -->
+  </div>
+
+  <!-- Copywrite Area  -->
+  <div class="copywrite-area">
+    <div class="container">
+      <div class="copywrite-text">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+				var today = new Date();
+				var minDate = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+				document.getElementById("date").setAttribute('min', today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
+				document.getElementById("date").valueAsDate = new Date();
+				//document.getElementById("date").val = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+              </script>
+              All rights reserved | This website was made by
+              <a href="https://technoextreme.co.zw/" target="_blank">TechnoExtreme</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="footer-nav">
+              <nav>
+                <ul>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Produce</a></li>
+                  <li><a href="#">Practice</a></li>
+                  <li><a href="#">Products</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+  <!-- ##### Footer Area End ##### -->
+
+  <!-- ##### All Javascript Files ##### -->
+  <!-- jquery 2.2.4  -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Popper js -->
+  <script src="js/popper.min.js"></script>
+  <!-- Bootstrap js -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Owl Carousel js -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- Classynav -->
+  <script src="js/classynav.js"></script>
+  <!-- Wow js -->
+  <script src="js/wow.min.js"></script>
+  <!-- Sticky js -->
+  <script src="js/jquery.sticky.js"></script>
+  <!-- Magnific Popup js -->
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <!-- Scrollup js -->
+  <script src="js/jquery.scrollup.min.js"></script>
+  <!-- Jarallax js -->
+  <script src="js/jarallax.min.js"></script>
+  <!-- Jarallax Video js -->
+  <script src="js/jarallax-video.min.js"></script>
+  <!-- Active js -->
+  <script src="js/active.js"></script>
+</body>
+</html>
