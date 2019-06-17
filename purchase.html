@@ -10,7 +10,7 @@
   <!-- Title -->
   <title>Champion Farm Produce | Purchase</title>
   <!-- Favicon -->
-  <link rel="icon" href="img/products/farm.jpg" />
+  <link rel="icon" href="img/products/ChampionFarmProduceLogo.jpg" />
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -54,32 +54,28 @@
             </div>
           </div>
 
-          <div class="row">
-            <!-- Shop Sidebar Area -->
-            <div class="col-12 col-md-4 col-lg-3">
-              <a href="index.html" class="nav-brand"><img src="img/products/farm.jpg" alt="" /></a>
+        <div class="row">
+          <!-- Shop Sidebar Area -->
+          <div class="col-12 col-md-4 col-lg-3">
+			<a href="index.html" class="nav-brand"><img src="img/products/ChampionFarmProduceLogo.jpg" alt="" /></a>
             </div>
             <!-- Single Widget Area -->
 
             <div class="single-widget-area">
               <!-- Title -->
               <h3 class="widget-title">Please provide more of your details</h3>
-              <form action="/action_page.php" method="post">
-                <label>Full Name</label>
-                <input class="purchase" type="textbox" id="fullname" required name="fullname"
-                  placeholder="Name like 'Vimbiso Nhumwa'"><br>
-                <label>Delivery Address</label>
-                <input class="purchase" type="textbox" id="address" required name="address"
-                  placeholder="Address e.g. 24 Smith Drive, Houghton Park, Harare"><br>
-                <label>Delivery Date</label>
-                <input class="purchase" type="date" min="2019-06-12" required id="date" name="date"><br>
-                <label>Paying Ecocash Number</label><br>
-                <input class="purchase" type="tel" id="phoneNumber" required name="number"
-                  pattern="\b(([\+]?263)?(0?7)?[1378])([\s.-]?[0-9]{1}[\s.-]?[0-9]{3}[\s.-]?[0-9]{3})$"
-                  placeholder="Enter phone number"><br>
-                <input type="checkbox" name="payment" value="delivery"> Pay on delivery<br>
-                <input type="submit" value="Proceed to order" class="btn famie-btn checkout-btn mt-30 w-100">
-              </form>
+				<form method="post">
+				<label>Full Name</label>
+				<input class="purchase" type="textbox" required name="fullname" placeholder="Name like 'Vimbiso Nhumwa'"><br>
+				<label>Delivery Address</label>
+				<input class="purchase" type="textbox" required name="address" placeholder="Address e.g. 24 Smith Drive, Houghton Park, Harare"><br>
+				<label>Delivery Date</label>
+				<input class="purchase" type="date" min="2019-06-12" required id="date" name="date"><br>
+				<label>Paying Ecocash Number</label><br>
+				<input class="purchase" type="tel" required name="number" pattern="\b(([\+]?263)?(0?7)?[1378])([\s.-]?[0-9]{1}[\s.-]?[0-9]{3}[\s.-]?[0-9]{3})$" placeholder="Enter phone number"><br>
+				<input type="checkbox" name="payment" value="delivery"> Pay on delivery<br>
+				<input type="submit" value="Proceed to order" class="btn famie-btn checkout-btn mt-30 w-100">
+				</form>
             </div>
           </div>
 
@@ -113,7 +109,7 @@
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
-          <div class="col-md-6">
+         <!--     <div class="col-md-6">
             <div class="footer-nav">
               <nav>
                 <ul>
@@ -126,7 +122,7 @@
                 </ul>
               </nav>
             </div>
-          </div>
+          </div>    -->
         </div>
       </div>
     </div>
@@ -178,5 +174,4 @@
     );
   </script>
 </body>
-
 </html>
