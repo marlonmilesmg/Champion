@@ -1844,6 +1844,24 @@ section#tables p {
 .alert {
   font-size: 0.85em;
 }
+
+
+.show-cart li {
+  display: flex;
+}
+.card {
+  margin-bottom: 20px;
+}
+.card-img-top {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+}
+
+
+
+
+
 h1.t-button,
 h2.t-button,
 h3.t-button,
