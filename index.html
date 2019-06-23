@@ -12,8 +12,9 @@
   <!-- Favicon -->
   <link rel="icon" href="img/products/ChampionFarmProduceLogo.jpg" />
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-   <script src="cart.js"></script> 
+  <link rel="stylesheet" href="style.css" 
+  <link rel="stylesheet" href="Cart.css" />
+   
   
 </head>
 
@@ -128,7 +129,7 @@
 				</select>
 				<br />
 				<button class="btn famie-btn checkout-btn mt-30 w-100" id="addToList" disabled="false" onclick="AddToList()" style= "max-width:373.21px">Add to list</button>
-				<button class="btn famie-btn checkout-btn mt-30 w-100" id="proceedToOrder" disabled="true"  style= "max-width:373.21px">Proceed to order</button>
+				<button class="btn famie-btn checkout-btn mt-30 w-100" id="proceedToOrder"  href = "purchase.html" onclick="proceedToOrder()" style= "max-width:373.21px">Proceed to order</button>
 				
 	
             </div>
@@ -142,7 +143,7 @@
 <nav class="navbar navbar-inverse bg-inverse fixed-top bg-faded">
     <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Cart (<span class="total-count" id="cartItemsTotalCount">0</span>)</button><button class="clear-cart btn btn-danger" onclick="ClearCart()">Clear Cart</button></div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" backdrop="false" data-target="#cart">Cart (<span class="total-count" id="cartItemsTotalCount">0</span>)</button><button class="clear-cart btn btn-danger" >Clear Cart</button></div>
     </div>
 </nav>
 
@@ -185,7 +186,7 @@
 
   
  <!-- Modal -->
-<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" backdrop ="false" >
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -208,36 +209,6 @@
   </div>
 </div> 
 
-
-
-		<script type="text/javascript"> 
-		if(document.getElementById('number1').checked) {
-		document.write("<h4>Hello"+"member</h4>");}
-		
-		if(document.getElementById('number2').checked) {
-		document.write("<h4>Hello"+"member</h4>");}
-		
-		if(document.getElementById('number3').checked) {
-		document.write("<h4>Hello"+"member</h4>");}
-		
-		if(document.getElementById('number4').checked) {
-		document.write("<h4>Hello"+"member</h4>");}
-
-		
-		</script>
-
-
-
-
-
-
-
-
-
-          <!-- Shop Products Area -->
-          
-        </div>
-      </div>
     </section>
     <!-- ##### Shop Area End ##### -->
 
@@ -257,10 +228,6 @@
               
               Copyright &copy;
               <script>
-			  var SelectedProducts = '{"Products":[]}';
-			  var obj = null;
-			  var selectedProductName = '';
-			  var selectedProductPrice;
                 document.write(new Date().getFullYear());
 				
 				(function () {
@@ -279,44 +246,24 @@
 					catOptions += "<option value='" + "3.00'>" + "Vegetable Combo (USD 3.00/Hamper)" + "</option>";
 					document.getElementById("products").innerHTML += catOptions;
 				})();
-	
-				function ProductsOnChange(){
-					goodsSelected = document.getElementById('products').options[document.getElementById('products').selectedIndex].text;
-					console.log(goodsSelected);
-					if(goodsSelected == "---Select the product of your choice---")
-						{
-							document.getElementById('addToList').disabled = true; 
-						}else
-						{
-						    document.getElementById('addToList').disabled = false;
-							selectedProductName = document.getElementById('products').options[document.getElementById('products').selectedIndex].text;
-							selectedProductPrice = document.getElementById('products').options[document.getElementById('products').selectedIndex].value;
-						}
-				}
+				var imported = document.createElement('script');
+				imported.src = 'cart.js';
 				
-				function AddToList(){
-					obj = JSON.parse(SelectedProducts);					
-					obj['Products'].push({"ProductName " : selectedProductName, "Amount" : selectedProductPrice});					
-					SelectedProducts = JSON.stringify(obj);	
-					document.getElementById("cartItemsTotalCount").innerHTML = obj.Products.length; 
-					if(document.getElementById("cartItemsTotalCount").innerHTML == 0)
+					var products = JSON.parse(localStorage.getItem('shoppingCart'));
+					if(products.length == 0)
 						{
 							document.getElementById('proceedToOrder').disabled = true; 
 						}else
 						{
 						    document.getElementById('proceedToOrder').disabled = false;
 							
-						}	
-					
-				}
+						}
 				
-				function ClearCart(){
-					SelectedProducts = '{"Products":[]}'
-					obj.Produccts = [];
-					console.log(SelectedProducts);
-					console.log(obj.Produccts.length);
-					document.getElementById("cartItemsTotalCount").innerHTML = obj.Products.length; 
-				}			
+
+				
+			function proceedToOrder(){
+					window.location.href = "purchase.html";
+				}
 		
               </script>
               All rights reserved | This website was made by
@@ -370,5 +317,6 @@
   <script src="js/jarallax-video.min.js"></script>
   <!-- Active js -->
   <script src="js/active.js"></script>
+  <script src="cart.js"></script> 
 </body>
 </html>

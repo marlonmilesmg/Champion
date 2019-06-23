@@ -92,7 +92,14 @@
                   class="btn famie-btn checkout-btn mt-30 w-100">
               </form>
             </div>
+	        <div class="col-md-3">
+			        <table class="show-cart table">
+          
+                    </table>
+              <div>Total price: $<span class="total-cart"></span></div>
+            </div>
           </div>
+
 
           <!-- Shop Products Area -->
 
@@ -101,7 +108,33 @@
     </section>
     <!-- ##### Shop Area End ##### -->
   </div>
+<!-- ##### Footer Area End ##### -->
 
+  <!-- ##### All Javascript Files ##### -->
+  <!-- jquery 2.2.4  -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Popper js -->
+  <script src="js/popper.min.js"></script>
+  <!-- Bootstrap js -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Owl Carousel js -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- Classynav -->
+  <script src="js/classynav.js"></script>
+  <!-- Wow js -->
+  <script src="js/wow.min.js"></script>
+  <!-- Sticky js -->
+  <script src="js/jquery.sticky.js"></script>
+  <!-- Magnific Popup js -->
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <!-- Scrollup js -->
+  <script src="js/jquery.scrollup.min.js"></script>
+  <!-- Jarallax js -->
+  <script src="js/jarallax.min.js"></script>
+  <!-- Jarallax Video js -->
+  <script src="js/jarallax-video.min.js"></script>
+  <!-- Active js -->
+  <script src="js/active.js"></script>
   <!-- Copywrite Area  -->
   <div class="copywrite-area">
     <div class="container">
@@ -112,6 +145,30 @@
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
               <script>
+			  var cartArray = JSON.parse(localStorage.getItem('shoppingCart'));
+			    // Total cart
+				var totalCart = 0;
+				var totalAmount = 0.00
+				for(var item in cartArray) {
+						totalCart += cartArray[item].price * cartArray[item].count;
+				}
+					totalAmount = Number(totalCart.toFixed(2));
+  
+					var output = "";
+					for(var i in cartArray) {
+						output += "<tr>"
+							+ "<td>" + cartArray[i].name + "</td>" 
+							+ "<td>(" + "$" + cartArray[i].price + ")</td>"
+							+ "" + cartArray[i].name + "' value='" + cartArray[i].count 
+							+ "" + cartArray[i].name + "></div></td>"
+							
+							+ " = " 
+							+ "<td>" + cartArray[i].count + "</td>" 
+							+  "</tr>";
+							}
+							$('.show-cart').html(output);
+							$('.total-cart').html(totalAmount);
+
                 document.write(new Date().getFullYear());
                 var today = new Date();
                 var minDate = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
@@ -135,6 +192,9 @@
                   catOptions += "<option value='" + "Vegetable Combo'>" + "Vegetable Combo (USD 3.00/Hamper)" + "</option>";
                   document.getElementById("products").innerHTML += catOptions;
                 })();
+				
+	
+					
 				// Pay on delivery change event 
 				document.getElementById('payOnDelivery').onchange = function(){
 				  document.getElementById('phoneNumber').disabled = this.checked;
@@ -209,9 +269,11 @@
     email = '';
 
     function myFunction() {
+	  var products = JSON.parse(localStorage.getItem('shoppingCart'));
       customerName = document.getElementById('fullname').value;
       phoneNumber = document.getElementById('phoneNumber').value;
-      goodsOrdered = document.getElementById('products').options[document.getElementById('products').selectedIndex].text;
+	  goodsOrdered = products;
+      //goodsOrdered = document.getElementById('products').options[document.getElementById('products').selectedIndex].text;
       dropdownIndex = document.getElementById('products').value;
       price = goodsOrdered.substring(goodsOrdered.indexOf('(U') + 1, goodsOrdered.indexOf('/'));
       deliveryDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
@@ -224,7 +286,6 @@
       } else {
         payOnDelivery = "No";
       }
-
       if (customerName != '' && deliveryAddress != '' && deliveryDate && phoneNumber != '' && payOnDelivery && email != '' && dropdownIndex != 0) {
         allValid = true;
       }
