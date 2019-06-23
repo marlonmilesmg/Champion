@@ -118,6 +118,7 @@
                 document.getElementById("deliveryDate").setAttribute('min', today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
                 document.getElementById("deliveryDate").valueAsDate = new Date();
 
+
                 (function () {
                   var catOptions = "";
                   catOptions += "<option value='" + "Tomatoes'>" + "Tomatoes (USD 0.60/Kg)" + "</option>";
@@ -134,6 +135,10 @@
                   catOptions += "<option value='" + "Vegetable Combo'>" + "Vegetable Combo (USD 3.00/Hamper)" + "</option>";
                   document.getElementById("products").innerHTML += catOptions;
                 })();
+				// Pay on delivery change event 
+				document.getElementById('payOnDelivery').onchange = function(){
+				  document.getElementById('phoneNumber').disabled = this.checked;
+				}
               </script>
               All rights reserved | This website was made by
               <a href="https://technoextreme.co.zw/" target="_blank">TechnoExtreme</a>
@@ -235,6 +240,7 @@
           alert('Order successfully placed!!!')
         );
       }
+	  
     }
   </script>
 </body>

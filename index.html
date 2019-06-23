@@ -123,17 +123,16 @@
             <div class="single-widget-area">
               <!-- Title -->
               <h3 class="widget-title">Products are also payable in ZWL/Ecocash</h3>
-				<select class="drop" id='products' name='products'>
+				<select class="drop" id='products' onchange="ProductsOnChange()"name='products'>
 					<option value="0">---Select the product of your choice---</option>
 				</select>
-				<a href="#" class="btn famie-btn checkout-btn mt-30 w-100">Add to list</a>
-				<a href="purchase.html" class="btn famie-btn checkout-btn mt-30 w-100">Proceed to order</a>
+				<br />
+				<button class="btn famie-btn checkout-btn mt-30 w-100" id="addToList" disabled="false" onclick="AddToList()" style= "max-width:373.21px">Add to list</button>
+				<button class="btn famie-btn checkout-btn mt-30 w-100" id="proceedToOrder" disabled="true"  style= "max-width:373.21px">Proceed to order</button>
+				
+	
             </div>
-            <!-- Product Description -->
-            <div class="product-desc text-center pt-4">
-              <a href="#" class="product-title">Strawberry</a>
-              <h6 class="price">$17.99</h6>
-            </div>
+
           </div>
 
 		
@@ -143,7 +142,7 @@
 <nav class="navbar navbar-inverse bg-inverse fixed-top bg-faded">
     <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Cart (<span class="total-count"></span>)</button><button class="clear-cart btn btn-danger">Clear Cart</button></div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Cart (<span class="total-count" id="cartItemsTotalCount">0</span>)</button><button class="clear-cart btn btn-danger" onclick="ClearCart()">Clear Cart</button></div>
     </div>
 </nav>
 
@@ -223,6 +222,7 @@
 		
 		if(document.getElementById('number4').checked) {
 		document.write("<h4>Hello"+"member</h4>");}
+
 		
 		</script>
 
@@ -257,24 +257,67 @@
               
               Copyright &copy;
               <script>
+			  var SelectedProducts = '{"Products":[]}';
+			  var obj = null;
+			  var selectedProductName = '';
+			  var selectedProductPrice;
                 document.write(new Date().getFullYear());
 				
 				(function () {
 					var catOptions = "";
-					catOptions += "<option value='" + "Tomatoes'>" + "Tomatoes (USD 0.60/Kg)" + "</option>";
-					catOptions += "<option value='" + "Onions'>" + "Onions (USD 0.70/Kg)" + "</option>";
-					catOptions += "<option value='" + "Brocolli'>" + "Brocolli (USD 0.90/Kg)" + "</option>";
-					catOptions += "<option value='" + "Cucumbers'>" + "Cucumbers (USD 1.20/Kg)" + "</option>";
-					catOptions += "<option value='" + "Green beans'>" + "Green beans (USD 1.00/Kg)" + "</option>";
-					catOptions += "<option value='" + "Peas'>" + "Peas (USD 1.10/Kg)" + "</option>";
-					catOptions += "<option value='" + "Potatoes'>" + "Potatoes (USD 4.10/Pocket)" + "</option>";
-					catOptions += "<option value='" + "Cabbage'>" + "Cabbage (USD 0.80/Head)" + "</option>";
-					catOptions += "<option value='" + "Green pepper'>" + "Green pepper (USD 1.60/Punnet)" + "</option>";
-					catOptions += "<option value='" + "Cauli flower'>" + "Cauli flower (USD 2.30/Kg)" + "</option>";
-					catOptions += "<option value='" + "Healthy Lifestyle'>" + "Healthy Lifestyle (USD 7.00/Hamper)" + "</option>";
-					catOptions += "<option value='" + "Vegetable Combo'>" + "Vegetable Combo (USD 3.00/Hamper)" + "</option>";
+					catOptions += "<option value='" + "0.60'>" + "Tomatoes (USD 0.60/Kg)" + "</option>";
+					catOptions += "<option value='" + "0.70'>" + "Onions (USD 0.70/Kg)" + "</option>";
+					catOptions += "<option value='" + "0.90'>" + "Brocolli (USD 0.90/Kg)" + "</option>";
+					catOptions += "<option value='" + "1.20'>" + "Cucumbers (USD 1.20/Kg)" + "</option>";
+					catOptions += "<option value='" + "1.00'>" + "Green beans (USD 1.00/Kg)" + "</option>";
+					catOptions += "<option value='" + "1.10'>" + "Peas (USD 1.10/Kg)" + "</option>";
+					catOptions += "<option value='" + "4.10'>" + "Potatoes (USD 4.10/Pocket)" + "</option>";
+					catOptions += "<option value='" + "0.80'>" + "Cabbage (USD 0.80/Head)" + "</option>";
+					catOptions += "<option value='" + "1.60'>" + "Green pepper (USD 1.60/Punnet)" + "</option>";
+					catOptions += "<option value='" + "2.30'>" + "Cauli flower (USD 2.30/Kg)" + "</option>";
+					catOptions += "<option value='" + "7.00'>" + "Healthy Lifestyle (USD 7.00/Hamper)" + "</option>";
+					catOptions += "<option value='" + "3.00'>" + "Vegetable Combo (USD 3.00/Hamper)" + "</option>";
 					document.getElementById("products").innerHTML += catOptions;
 				})();
+	
+				function ProductsOnChange(){
+					goodsSelected = document.getElementById('products').options[document.getElementById('products').selectedIndex].text;
+					console.log(goodsSelected);
+					if(goodsSelected == "---Select the product of your choice---")
+						{
+							document.getElementById('addToList').disabled = true; 
+						}else
+						{
+						    document.getElementById('addToList').disabled = false;
+							selectedProductName = document.getElementById('products').options[document.getElementById('products').selectedIndex].text;
+							selectedProductPrice = document.getElementById('products').options[document.getElementById('products').selectedIndex].value;
+						}
+				}
+				
+				function AddToList(){
+					obj = JSON.parse(SelectedProducts);					
+					obj['Products'].push({"ProductName " : selectedProductName, "Amount" : selectedProductPrice});					
+					SelectedProducts = JSON.stringify(obj);	
+					document.getElementById("cartItemsTotalCount").innerHTML = obj.Products.length; 
+					if(document.getElementById("cartItemsTotalCount").innerHTML == 0)
+						{
+							document.getElementById('proceedToOrder').disabled = true; 
+						}else
+						{
+						    document.getElementById('proceedToOrder').disabled = false;
+							
+						}	
+					
+				}
+				
+				function ClearCart(){
+					SelectedProducts = '{"Products":[]}'
+					obj.Produccts = [];
+					console.log(SelectedProducts);
+					console.log(obj.Produccts.length);
+					document.getElementById("cartItemsTotalCount").innerHTML = obj.Products.length; 
+				}			
+		
               </script>
               All rights reserved | This website was made by
               <a href="https://technoextreme.co.zw/" target="_blank">TechnoExtreme</a>
