@@ -1863,3 +1863,8 @@ textarea.form-control {
   height: 100px; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.modal-backdrop {
+	display : none !important;
+}
