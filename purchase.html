@@ -82,18 +82,37 @@
                 <label>Email Address</label>
                 <input class="purchase" type="email" id="email" required placeholder="username@domain.co.zw"><br>
                 <label>Delivery Date</label>
-                <input class="purchase" type="date" min="2019-06-12" required id="deliveryDate" name="date"><br>
+                <input class="purchase" type="date" min="2019-06-12" required id="deliveryDate" name="date" oninput = 'noWeekends()'><br>
+                <script type="text/javascript">
+                    function noWeekends(){
+                        var inputDate = document.getElementById('deliveryDate').value;
+                        var day = new Date( inputDate);
+                        if( day.getDay() == 0 || day.getDay() == 6 ){
+                           alert('Delivery date cannot be on a weekend');
+                           document.getElementById('deliveryDate').value = ""
+                        }
+                    }
+                  </script>
                 <label>Paying Ecocash Number</label><br>
                 <input class="purchase" type="tel" id="phoneNumber" required name="number"
                   pattern="\b(([\+]?263)?(0?7)?[1378])([\s.-]?[0-9]{1}[\s.-]?[0-9]{3}[\s.-]?[0-9]{3})$"
                   placeholder="Enter phone number"><br>
-                <input type="checkbox" id="payOnDelivery" name="payment"> Pay on delivery<br>
+                <input type="checkbox" id="payOnDelivery" name="payment" onclick="disableEcocashNumber()"> Pay on delivery<br>
+                <script>
+                  function disableEcocashNumber()
+                  {
+                    if(document.getElementById("payOnDelivery").checked = 1)
+                    {
+                      document.getElementById("phoneNumber").setAttribute("disabled","disabled")
+                    }
+                  }
+                </script>
                 <input type="submit" id="btnOrder" value="Proceed to order"
                   class="btn famie-btn checkout-btn mt-30 w-100">
               </form>
             </div>
             <div class="col-md-3">
-              <table class="show-cart table">
+              <table class="show-cart table"> 
 
               </table>
               <div>Total price: $<span class="total-cart"></span></div>
