@@ -13,3 +13,7 @@ body {
   height: 200px;
   align-self: center;
 }
+
+.show-cart {
+background-color: #99FF99;
+}
