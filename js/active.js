@@ -88,8 +88,8 @@
   // :: 6.0 ScrollUp Active Code
   if ($.fn.scrollUp) {
       browserWindow.scrollUp({
-          scrollSpeed: 1500,
-          scrollText: '<i class="arrow_up"></i>'
+          scrollSpeed: 100,
+          scrollText: '<i class="arrow_up">Top</i>'
       });
   }
 
