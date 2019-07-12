@@ -276,14 +276,14 @@
         }).then(
           swal("Confirmation message", "Order successfully placed!!!", "success")
         );
-        
+        localStorage.clear();
+        cartArray = '';
+        document.getElementById('cartDetails').innerHTML = '';
       }
-      // else {
-      //   swal("Confirmation message", "One or more fields are invalid!!!", "error")
-      // }
-      localStorage.clear();
-      cartArray = '';
-      document.getElementById('cartDetails').innerHTML = '';
+      else {
+        swal("Confirmation message", "One or more fields are invalid!!!", "error")
+      }
+
       // window.location.href = 'index.html';
     }
   </script>

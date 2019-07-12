@@ -1906,6 +1906,17 @@ li.list-group-item1 {
 .input-group {
   margin-bottom: 20px;
 }
+@media (max-width: 499px) {
+  .input-group {
+    width: 59px;
+    margin : 0 auto !important
+       
+  }
+  .purchase{
+   width: 71% !important;
+  }
+ 
+}
 .in-gp-tl {
   padding: 0;
 }
